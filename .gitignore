@@ -1,0 +1,99 @@
+# =============================
+# Global Node.js Ignored Files
+# =============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# =============================
+# Environment & Local Config
+# =============================
+.env
+.env.local
+.env.*.local
+*.env
+
+# =============================
+# Build & Output Directories
+# =============================
+dist/
+build/
+.cache/
+.tmp/
+out/
+coverage/
+logs/
+*.log
+
+# Astro / Vite / Next / React builds
+frontend/.astro/
+frontend/.next/
+frontend/.vercel/
+frontend/.output/
+frontend/.vite/
+admin/.vite/
+
+# =============================
+# OS and IDE Specific
+# =============================
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# VSCode / JetBrains / others
+.vscode/
+.idea/
+*.iml
+
+# =============================
+# Test and Temporary Files
+# =============================
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
+*.log
+*.pid
+*.seed
+*.tgz
+*.tar.gz
+
+# =============================
+# Firebase / Netlify / Others
+# =============================
+.firebase/
+.netlify/
+.vercel/
+functions/lib/
+functions/node_modules/
+
+# =============================
+# Admin, Frontend, and Server
+# =============================
+admin/node_modules/
+admin/.env
+admin/.env.local
+frontend/node_modules/
+frontend/.env
+frontend/.env.local
+server/node_modules/
+server/.env
+server/.env.local
+
+# =============================
+# Miscellaneous
+# =============================
+*.zip
+*.rar
+*.7z
+*.bak
+*.old
