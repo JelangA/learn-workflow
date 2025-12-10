@@ -24,12 +24,18 @@ jobs:
             
             # Pull latest changes
             echo "Pulling latest changes from repository..."
-            git pull origin main || { echo "Git pull failed"; exit 1; }
+            git fetch origin main
+            git reset --hard origin/main
             
-            # Restart Docker containers
+            # Restart Docker containers (with fallback to legacy syntax)
             echo "Restarting Docker containers..."
-            docker compose down || true
-            docker compose up -d --build
+            if command -v docker compose &> /dev/null; then
+              docker compose down || true
+              docker compose up -d --build
+            else
+              docker-compose down || true
+              docker-compose up -d --build
+            fi
             
             # Show running containers
             echo "Running containers:"

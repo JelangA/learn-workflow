@@ -6,8 +6,8 @@ This repository is configured with automatic deployment to your server when code
 
 When you push code to the `main` branch, a GitHub Actions workflow automatically:
 1. Connects to your server via SSH
-2. Runs `git pull` to get the latest code
-3. Restarts Docker containers using `docker compose` (modern syntax)
+2. Runs `git fetch` and `git reset --hard` to get the latest code (replacing any local changes)
+3. Restarts Docker containers using `docker compose` (with automatic fallback to legacy `docker-compose`)
 
 ## Setup Instructions
 
@@ -99,16 +99,16 @@ docker-compose --version 2>/dev/null || echo "Using docker compose (modern synta
 - Ensure the SSH private key is properly formatted (include BEGIN/END markers)
 - Check that the public key is in `~/.ssh/authorized_keys` on the server
 
-### Git Pull Failed
+### Git Fetch/Reset Failed
 - Ensure the repository is already cloned at `PROJECT_PATH`
 - Check that the SSH user has read/write permissions for the project directory
-- Verify there are no uncommitted changes on the server that would conflict
+- Note: The workflow uses `git reset --hard` which will discard any local changes on the server
 
 ### Docker Restart Failed
 - Ensure Docker and Docker Compose are installed
 - Verify the SSH user has permission to run Docker commands
 - Check that `docker-compose.yml` exists in the project root
-- The workflow uses modern `docker compose` syntax; if your server only has legacy `docker-compose`, update the workflow file
+- The workflow automatically detects and uses either modern `docker compose` or legacy `docker-compose`
 
 ## Workflow File
 
