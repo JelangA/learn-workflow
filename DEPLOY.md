@@ -53,7 +53,7 @@ Go to your repository Settings → Secrets and variables → Actions → New rep
 
 Your server must have:
 - Git installed
-- Docker and Docker Compose installed
+- Docker and Docker Compose installed (modern `docker compose` or legacy `docker-compose`)
 - SSH access enabled
 - The repository already cloned at `PROJECT_PATH`
 - Proper permissions for the SSH user to run git and docker commands
@@ -74,7 +74,9 @@ newgrp docker
 
 # Test docker commands
 docker ps
-docker-compose --version
+docker compose version
+# If you have legacy docker-compose, verify it works too
+docker-compose --version 2>/dev/null || echo "Using docker compose (modern syntax)"
 ```
 
 ## Testing the Workflow
@@ -106,6 +108,7 @@ docker-compose --version
 - Ensure Docker and Docker Compose are installed
 - Verify the SSH user has permission to run Docker commands
 - Check that `docker-compose.yml` exists in the project root
+- The workflow uses modern `docker compose` syntax; if your server only has legacy `docker-compose`, update the workflow file
 
 ## Workflow File
 
