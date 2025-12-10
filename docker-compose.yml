@@ -5,10 +5,8 @@ services:
       dockerfile: Dockerfile
     image: learn-workflow-server:latest
     container_name: learn-workflow-server
-    env_file:
-      - ./src/.env
     ports:
-      - "${PORT:-5000}:5000"
+      - "5000:5000"
     volumes:
       - ./src:/usr/src/app:cached
       - /usr/src/app/node_modules
