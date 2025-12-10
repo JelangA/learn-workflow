@@ -7,7 +7,7 @@ This repository is configured with automatic deployment to your server when code
 When you push code to the `main` branch, a GitHub Actions workflow automatically:
 1. Connects to your server via SSH
 2. Runs `git pull` to get the latest code
-3. Restarts Docker containers using `docker-compose`
+3. Restarts Docker containers using `docker compose` (modern syntax)
 
 ## Setup Instructions
 
